@@ -1,0 +1,126 @@
+
+!
+version 15.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$8PwP$LKQ/wnqnZS7KHKp6/Zy9F/
+enable password 222222
+!
+no aaa new-model
+no process cpu extended history
+no process cpu autoprofile hog
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp run
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ no shutdown
+ ip address 10.2.2.1 255.255.255.0
+ no cdp enable
+ no mop enabled
+!
+interface Ethernet0/1
+ no shutdown
+ ip address 192.168.3.1 255.255.255.0
+ no cdp enable
+!
+interface Ethernet0/2
+ no shutdown
+ no ip address
+ shutdown
+ no cdp enable
+!
+interface Ethernet0/3
+ no shutdown
+ no ip address
+ shutdown
+ no cdp enable
+!
+router ospf 1
+ passive-interface Ethernet0/1
+ network 10.2.2.0 0.0.0.3 area 0
+ network 192.168.3.0 0.0.0.255 area 0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+no service-routing capabilities-manager
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ password 111111
+ login
+ transport input none
+!
+!
+end

@@ -1,0 +1,144 @@
+
+!
+! Last configuration change at 13:07:56 UTC Tue Jan 3 2023
+!
+version 15.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$9wWG$lTvAp8p5cq5ZJxbS0wYLz0
+!
+aaa new-model
+!
+!
+!
+!
+!
+!
+!
+aaa session-id common
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ no shutdown
+ ip address 10.2.2.2 255.255.255.0
+!
+interface Ethernet0/1
+ no shutdown
+ ip address 10.1.1.2 255.255.255.0
+!
+interface Ethernet0/2
+ no shutdown
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ no shutdown
+ no ip address
+ shutdown
+!
+router ospf 1
+ network 10.1.1.0 0.0.0.3 area 0
+ network 10.2.2.0 0.0.0.3 area 0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+parser view admin1
+ secret 5 $1$yrP5$fJFiO3GWknIAKpu6ZSf0m/
+ commands exec include all configure terminal
+ commands exec include configure
+ commands exec include all show
+ commands exec include all debug
+!
+parser view admin2
+ secret 5 $1$9juh$xSXjJnlXNKBC7hftF1pV7/
+ commands exec include all show
+!
+parser view tech
+ secret 5 $1$bRID$Rw0HZ7GrCsdGI/OMtyCMN/
+ commands exec include show ip
+ commands exec include show version
+ commands exec include show parser view
+ commands exec include show parser
+ commands exec include show interfaces
+ commands exec include show
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ transport input none
+!
+!
+end

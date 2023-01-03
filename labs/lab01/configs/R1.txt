@@ -1,0 +1,157 @@
+!
+! Last configuration change at 12:46:57 UTC Tue Jan 3 2023
+!
+version 15.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+enable secret 5 $1$R6xJ$JjCRJ/OYhaRO9KlLfm8NC0
+enable password 222222
+!
+aaa new-model
+!
+!
+!
+!
+!
+!
+!
+aaa session-id common
+no process cpu extended history
+no process cpu autoprofile hog
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+!
+!
+!
+!
+no ip domain lookup
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+no cdp run
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ no shutdown
+ ip address 10.1.1.1 255.255.255.0
+ no cdp enable
+!
+interface Ethernet0/1
+ no shutdown
+ ip address 192.168.1.1 255.255.255.0
+ no cdp enable
+!
+interface Ethernet0/2
+ no shutdown
+ no ip address
+ shutdown
+ no cdp enable
+!
+interface Ethernet0/3
+ no shutdown
+ no ip address
+ shutdown
+ no cdp enable
+!
+router ospf 1
+ passive-interface Ethernet0/1
+ network 10.1.1.0 0.0.0.3 area 0
+ network 192.168.1.0 0.0.0.255 area 0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+no service-routing capabilities-manager
+dialer-list 1 protocol ip permit
+!
+snmp-server community sddfsd RO
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+parser view admin1
+ secret 5 $1$xtzY$8E.Lh1PNPnpJNpk2CQCew0
+ commands exec include all configure terminal
+ commands exec include configure
+ commands exec include all show
+ commands exec include all debug
+!
+parser view admin2
+ secret 5 $1$7Fw1$NvRbdo5sQGJ8zO4hg0lBx/
+ commands exec include all show
+!
+parser view tech
+ secret 5 $1$Vgyk$zE0WcHaFOEgYh6dK2nLzT1
+ commands exec include show ip interface brief
+ commands exec include show ip interface
+ commands exec include show ip
+ commands exec include show version
+ commands exec include show interfaces
+ commands exec include show
+!
+!
+line con 0
+ exec-timeout 0 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ password 111111
+ transport input none
+!
+!
+end
