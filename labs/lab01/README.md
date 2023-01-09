@@ -6,7 +6,7 @@
 
 Настроил ip-адреса на маршрутизаторах:
 
-R1(config)# interface g0/0/0
+<b>R1(config)# interface g0/0/0</b>
 R1(config-if)# ip address 10.1.1.1 255.255.255.0
 R1(config-if)# no shutdown
 
