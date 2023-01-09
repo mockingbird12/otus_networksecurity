@@ -6,13 +6,13 @@
 
 Настроил ip-адреса на маршрутизаторах:
 
-<b>R1(config)# interface g0/0/0</b>
+<b>R1(config)# interface g0/0/0
 R1(config-if)# ip address 10.1.1.1 255.255.255.0
 R1(config-if)# no shutdown
 
 R1(config)# interface g0/0/1
 R1(config-if)# ip address 192.168.1.1 255.255.255.0
-R1(config-if)# no shutdown
+R1(config-if)# no shutdown</b>
 
 Настроил OSPF:
 
