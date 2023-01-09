@@ -20,6 +20,7 @@ R1(config-if)# no shutdown
 </b>
 
 Настроил OSPF:
+
 <b>
 R1(config)# router ospf 1
 
@@ -39,7 +40,9 @@ R3(config-router)# network 10.2.2.0 0.0.0.3 area 0
 
 R3(config-router)# network 192.168.3.0 0.0.0.255 area 0
 </b>
+
 Настроил AAA и создал ползователя которому разрешены команды show, conf t, debug:
+
 <b>
 R1# configure terminal
 
@@ -55,7 +58,9 @@ R1(config-view)# commands exec include all debug
 
 R1(config-view)# end
 </b>
+
 Затем создал пользователя с командами только show:
+
 <b>
 R1# configure terminal
 
@@ -67,7 +72,9 @@ R1(config-view)# commands exec include all show
 
 R1(config-view)# end
 </b>
+
 Создал пользователя только с определенными коммандами show:
+
 <b>
 R1(config)# parser view tech
 
