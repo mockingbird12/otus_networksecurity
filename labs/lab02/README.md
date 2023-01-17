@@ -35,19 +35,19 @@ R3(config-router)# network 192.168.3.0 0.0.0.255 area 0
 Базовые настройки безопасности:
 
 <b>
-enable
-configure terminal
-service password-encryption
-security passwords min-length 10
-enable algorithm-type scrypt secret cisco12345
-ip domain name netsec.com
-username user01 algorithm-type scrypt secret user01pass
-username admin privilege 15 algorithm-type scrypt secret adminpasswd
-banner motd " Unauthorized access is strictly prohibited! "
-line con 0
- exec-timeout 5 0
-login local
- logging synchronous
+enable  
+configure terminal  
+service password-encryption  
+security passwords min-length 10  
+enable algorithm-type scrypt secret cisco12345  
+ip domain name netsec.com  
+username user01 algorithm-type scrypt secret user01pass  
+username admin privilege 15 algorithm-type scrypt secret adminpasswd  
+banner motd " Unauthorized access is strictly prohibited! "  
+line con 0  
+ exec-timeout 5 0  
+login local  
+ logging synchronous  
 line aux 0
  exec-timeout 5 0
 login local
