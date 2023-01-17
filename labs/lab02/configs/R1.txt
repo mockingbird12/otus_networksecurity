@@ -1,0 +1,82 @@
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name netsec.com
+ip cef
+no ipv6 cef
+!
+!
+multilink bundle-name authenticated
+username user01 secret 5 $1$u9mY$EVnFOHEQGSHOCC3hqNRd9.
+username admin privilege 15 secret 5 $1$UdD/$5XUcF4XSYmVwnvOZa6Dfa.
+!
+!
+!
+!
+!
+ip ssh time-out 90
+ip ssh authentication-retries 2
+ip ssh version 2
+interface Ethernet0/0
+ ip address 10.1.1.1 255.255.255.0
+!
+interface Ethernet0/1
+ ip address 192.168.1.1 255.255.255.0
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+router ospf 1
+ network 10.1.1.0 0.0.0.3 area 0
+ network 192.168.1.0 0.0.0.255 area 0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+!
+control-plane
+!
+!
+line con 0
+ exec-timeout 5 0
+ logging synchronous
+ login local
+line aux 0
+ exec-timeout 5 0
+ login local
+line vty 0 4
+ exec-timeout 5 0
+ privilege level 15
+ login local
+ transport input ssh
+!
+!
+!
+end

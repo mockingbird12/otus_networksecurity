@@ -1,0 +1,144 @@
+Current configuration : 2405 bytes
+!
+version 15.4
+no service pad
+service tcp-keepalives-in
+service tcp-keepalives-out
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec localtime show-timezone
+service password-encryption
+service sequence-numbers
+!
+hostname R3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+security authentication failure rate 10 log
+security passwords min-length 6
+logging console critical
+enable secret 5 $1$GwTR$KVjAF425TsQPluJiiOHrD.
+enable password 7 06545D731E1C5B
+aaa new-model
+!
+!
+aaa authentication login local_auth local
+!
+!
+!
+!
+!
+aaa session-id common
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+no ip source-route
+no ip gratuitous-arps
+!
+!
+no ip bootp server
+ip domain name www.netsec.com
+ip cef
+login block-for 60 attempts 2 within 30
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+archive
+ log config
+  logging enable
+username admin password 7 050A020228425E080A160016
+!
+redundancy
+!
+no cdp run
+!
+ip tcp intercept list autosec_tcp_intercept_list
+ip tcp intercept connection-timeout 3600
+ip tcp intercept watch-timeout 15
+ip tcp intercept max-incomplete low 450 high 550
+ip tcp intercept drop-mode random
+ip ssh time-out 60
+ip ssh authentication-retries 2
+!
+!
+!
+!
+!
+interface Ethernet0/0
+ ip address 10.2.2.1 255.255.255.0
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ no mop enabled
+!
+interface Ethernet0/1
+ ip address 192.168.3.1 255.255.255.0
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ no mop enabled
+!
+interface Ethernet0/2
+ no ip address
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ shutdown
+ no mop enabled
+!
+interface Ethernet0/3
+ no ip address
+ no ip redirects
+ no ip unreachables
+ no ip proxy-arp
+ shutdown
+ no mop enabled
+!
+router ospf 1
+ passive-interface Ethernet0/1
+ network 10.2.2.0 0.0.0.3 area 0
+ network 192.168.3.0 0.0.0.255 area 0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+logging trap debugging
+logging facility local2
+!
+!
+access-list 100 permit udp any any eq bootpc
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+banner motd ^Corbidden
+K^C
+!
+line con 0
+ exec-timeout 5 0
+ logging synchronous
+ login authentication local_auth
+ transport output telnet
+line aux 0
+ login authentication local_auth
+ transport output telnet
+line vty 0 4
+ login authentication local_auth
+ transport input telnet ssh
+!
+!
+end
