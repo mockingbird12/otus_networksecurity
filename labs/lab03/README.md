@@ -10,13 +10,13 @@
 
 Например, Alice и Bob хотят установить безопасный обмен сообщениями между собой.
 Вначале они выбирают простой модуль и число которое будут возводить в степень(генератор).
-(https://github.com/mockingbird12/otus_networksecurity/blob/main/labs/lab03/DH_a-b.png)
+![alt-текст](https://github.com/mockingbird12/otus_networksecurity/blob/main/labs/lab03/DH_a-b.png)
 Затем Alice выбирает случайное число (например 34) и вычисляет 4 в степени 34 по модулю 17. Получается 4. И пересылает этот результат Bob публично.
 
 Bob получает это число (4) и вычисляет сессионный ключ. Получается 1.
 
 Потом Bob выбирает свое случайное число (например 27) и вычисляет 4 в степени 27 по модулю 17. Получается 1. Пересылает это число Alice.
-(https://github.com/mockingbird12/otus_networksecurity/blob/main/labs/lab03/DH_b-a.png)
+![alt-текст](https://github.com/mockingbird12/otus_networksecurity/blob/main/labs/lab03/DH_b-a.png)
 Alice вычисляет сессионный ключ 1 в степени 34 по модулю 21. Получается 1.
 Т.О. Alice и Bob выбрали сессионный ключ.
 
