@@ -3,3 +3,5 @@
 [Административные роли](lab01/)
 
 [Automated Security Features](lab02/)
+
+[Протокол Диффи-Хелмана](lab03/)
