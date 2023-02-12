@@ -11,6 +11,7 @@ arp -v
 Запускаем через python3 main.py
 
 Снова смотрим arp-таблицу на атакуемом:
+
 ![alt-текст](https://github.com/mockingbird12/otus_networksecurity/blob/main/labs/lab05/after.jpg)
 Из нее мы видим, что mac-адрес шлюза изменился на mac атакующего.
 
