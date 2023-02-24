@@ -32,6 +32,7 @@ vlan:
 	90
 
 Передовался конфиг
+![alt-текст](https://github.com/mockingbird12/otus_networksecurity/blob/main/labs/lab07/tftp-config.jpg)
 !
 ! Last configuration change at 20:55:45 UTC Fri Mar 3 2017 by weberjoh
 ! NVRAM config last updated at 21:02:36 UTC Fri Mar 3 2017 by weberjoh
