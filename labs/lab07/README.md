@@ -1,9 +1,9 @@
 ## Вывод url-адресов из scrapy
 Запрос со стороны атакуемого:
-![alt-текст](https://github.com/mockingbird12/otus_networksecurity/blob/main/labs/lab07/source-url.jpg)
+![alt-текст](https://github.com/mockingbird12/otus_networksecurity/blob/main/labs/lab07/source_url.jpg)
 
 Вывод на стороне атакующего:
-![alt-текст](https://github.com/mockingbird12/otus_networksecurity/blob/main/labs/lab07/hacker-url.jpg)
+![alt-текст](https://github.com/mockingbird12/otus_networksecurity/blob/main/labs/lab07/hacker_url.jpg)
 
 ## Из данного дампа трафика мы увидели, что передовался конфиг роутера
 
