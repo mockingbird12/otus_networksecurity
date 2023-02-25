@@ -2,6 +2,7 @@
 Запрос со стороны атакуемого:
 ![alt-текст](https://github.com/mockingbird12/otus_networksecurity/blob/main/labs/lab07/source_url.jpg)
 
+
 Вывод на стороне атакующего:
 ![alt-текст](https://github.com/mockingbird12/otus_networksecurity/blob/main/labs/lab07/hacker_url.jpg)
 
