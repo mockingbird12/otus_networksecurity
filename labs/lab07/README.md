@@ -1,35 +1,11 @@
-В данном дампе мы видим
-ип-адреса:
-192.168.10.1
-192.168.20.1
-192.168.30.1 - DHCP-сервер
+##Вывод url-адресов из scrapy
+Запрос со стороны атакуемого:
+![alt-текст](https://github.com/mockingbird12/otus_networksecurity/blob/main/labs/lab07/source-url.jpg)
 
-192.168.121.2 - Cisco vty-access/10 permitted - пересылает логи на лог-сервер
-192.168.121.10
-192.168.121.40
-192.168.121.253
-192.168.121.254 - Cisco?? IP SLA
+Вывод на стороне атакующего:
+![alt-текст](https://github.com/mockingbird12/otus_networksecurity/blob/main/labs/lab07/hacker-url.jpg)
 
-192.168.30.11
-192.168.110.10
-192.168.120.10 - rsyslog- сервер
-192.168.120.22 - dns-сервер. К нему обращаются по 53 порту.
-
-192.168.121.253
-192.168.121.254 - Cisco?? IP SLA
-? Устройства Cisco? Обмен через HSPRV 
-
-00:21:70:e9:bb:47 Dell 192.168.30.11
-
-
-00:21:1b:ae:31:99 GigabiteEthernet0/1
-vlan:
-	30
-	40
-	50
-	60
-	80
-	90
+##Из данного дампа трафика мы увидели, что передовался конфиг роутера
 
 Передовался конфиг
 ![alt-текст](https://github.com/mockingbird12/otus_networksecurity/blob/main/labs/lab07/tftp-config.jpg)
